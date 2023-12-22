@@ -1,0 +1,18 @@
+#!/bin/sh
+
+main()
+{
+    cd `dirname $0`
+    local CMDFILES
+    export LTPROOT=${PWD}
+    export TMPBASE="/tmp"
+    export PATH="${PATH}:${LTPROOT}/bin"
+    CMDFILES="${LTPROOT}/mm"
+    cat <<-EOF >&1
+"START"
+EOF
+    
+    "${PWD}/bin/ltp-m" -f ${CMDFILES}
+}
+
+main
